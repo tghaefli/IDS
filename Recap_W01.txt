@@ -36,7 +36,3 @@ Vorteile
 Nachteile
 	Sag weniger über das System (Ordnung, Brandweite)
 	Keine Filterung der Messrauschen
-
-
-
-new data

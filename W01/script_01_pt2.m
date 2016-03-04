@@ -15,6 +15,10 @@ J_min=1e9;
 %   3.2   19.9   15.5   81.835
 
 
+
+% Conclusion: d +/- 50% und w0 +/- obwohl J gleich bleibt
+
+
 K_tmp  =  3;
 w0_tmp = 10;
 d_tmp  = 13;
