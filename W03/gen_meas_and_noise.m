@@ -1,0 +1,61 @@
+close all;  clear all;  clc;
+
+% Künstliche Messdaten für ein PT1 generieren
+K = 5;
+Tau = 0.3;
+Gs = tf(K,[Tau 1]);
+
+% Abtastzeit
+T = 0.03;
+
+
+% Define Transfer Function
+a1 = -exp(-T/Tau);
+b1 = K*(1-exp(-T/Tau));
+
+theta = [a1 b1]';
+
+
+% Anregung
+t_k = (0:T:5)';
+t_step = 2.5;
+u_init = 5;
+u_end = 18;
+
+
+u_k = u_init * ones(length(t_k),1); % Set the first few point to the init value
+
+I = find(t_k >= t_step);           % Set other points to the end value
+u_k(I) = u_end;
+
+%plot(u_k);
+
+
+% Simulation mit Hz
+sigma = 1;
+
+y_init = 0;
+for sample_k_plus_1 = 1:length(t_k)
+    if sample_k_plus_1 == 1
+        y_k(sample_k_plus_1) = y_init
+        y_m_k(sample_k_plus_1) = y_k(sample_k_plus_1) + sigma*randn;
+    else
+    y_k(sample_k_plus_1) = [-y_k(sample_k_plus_1 - 1) u_k(sample_k_plus_1 - 1)] * theta;
+    y_m_k(sample_k_plus_1) = y_k(sample_k_plus_1) + sigma*randn;               
+    end
+end
+
+%figure(1)
+%plot(t_k,u_k,'+', t_k,y_k,'+')
+
+%figure(2)
+%plot(t_k,u_k,'+', t_k,y_m_k,'+')
+
+% Addieren von Simulation und noise
+[u_calc, sigma_calc] = normfit(y_m_k - y_k);
+
+A = struct('T',T, ...
+           't_k',t_k, ...
+           'u_k',u_k, ...
+           'y_k',y_k', ...
+           'y_m_k',y_m_k');
