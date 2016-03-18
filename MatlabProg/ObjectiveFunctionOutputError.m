@@ -15,11 +15,6 @@ pause(0.1);
         
 % Objective function computation
 eo = y_m - y_hat;
-% J = 0;
-% for iter_k = 1:length(eo)
-%    J = J + eo(iter_k)^2;
-% end
-
 J = eo' * eo;
 
 figure(12)

@@ -11,8 +11,9 @@ clc;
 
 theta = [0 0];
 
-theta(1) = -exp(-T/0.1);
-theta(2) = 3*(1-exp(-T/0.1));
+theta(1) = -exp(-T/0.2);
+theta(2) = 2*(1-exp(-T/0.2));
+
 
 Je = ObjectiveFunctionEquationError(theta, tk, uk, ym, T);
 Je
@@ -24,11 +25,8 @@ Jo
 LB = [-100 -100 ];
 UB = [100 100];
 
-%@: anonymous, which variables can be varied
-
 options = optimoptions('fmincon');
 options.Display = 'iter';
-
 
 [val J] = fmincon(@(theta) ObjectiveFunctionEquationError(theta, tk, uk, ym, T), theta_0, ...
     [], [], [], [], ...
