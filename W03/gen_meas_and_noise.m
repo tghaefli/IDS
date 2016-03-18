@@ -3,11 +3,9 @@ close all;  clear all;  clc;
 % Künstliche Messdaten für ein PT1 generieren
 K = 5;
 Tau = 0.3;
-Gs = tf(K,[Tau 1]);
-
-% Abtastzeit
 T = 0.03;
 
+sigma = 1;
 
 % Define Transfer Function
 a1 = -exp(-T/Tau);
@@ -32,16 +30,14 @@ u_k(I) = u_end;
 
 
 % Simulation mit Hz
-sigma = 1;
-
 y_init = 0;
 for sample_k_plus_1 = 1:length(t_k)
     if sample_k_plus_1 == 1
-        y_k(sample_k_plus_1) = y_init;
-        y_m_k(sample_k_plus_1) = y_k(sample_k_plus_1) + sigma*randn;
+        y_k(sample_k_plus_1,1) = y_init;
+        y_m_k(sample_k_plus_1,1) = y_k(sample_k_plus_1,1) + sigma*randn;
     else
-    y_k(sample_k_plus_1) = [-y_k(sample_k_plus_1 - 1) u_k(sample_k_plus_1 - 1)] * theta;
-    y_m_k(sample_k_plus_1) = y_k(sample_k_plus_1) + sigma*randn;               
+    y_k(sample_k_plus_1,1) = [-y_k(sample_k_plus_1 - 1,1) u_k(sample_k_plus_1 - 1,1)] * theta;
+    y_m_k(sample_k_plus_1,1) = y_k(sample_k_plus_1,1) + sigma*randn;               
     end
 end
 
