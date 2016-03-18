@@ -20,13 +20,16 @@ for k = 1:length(t_k)
     end
 end
 
+y_tmp = [0 ; -y_m_k(1:length(y_m_k)-1)'];
+u_tmp = [0 ; u_k(1:length(u_k)-1)];
+yk_sim = [y_tmp u_tmp]*[a1 ; b1];
 
-yk_sim = [-y_m_k(1:length(y_m_k)-1)' u_k(1:length(u_k)-1)]*[a1 b1]'
 ee = y_m_k - yk_sim';
 
 %ee = y_m_k - yk_sim;
 
-plotyy(t_k,y_m_k, t_k, yk_sim)
+%plotyy(t_k,y_m_k, t_k, yk_sim)
+plot(t_k,y_m_k, t_k, yk_sim)
 drawnow()
     
 J=0;
