@@ -1,12 +1,23 @@
 clear all; close all; clc;
 
+% Frequenzbereich festlegen
 wmin = 2*pi*0;
-wmax = 2*pi*1000;
-T = 1E-3;
-tmin = 0;
-tmax = 20;
-t = (tmin:T:tmax)';
+wmax = 2*pi*50;
 
-u = cos(wmin*t+1/2*1*t.^2);
+% Dauer des Experiments (s)
+Td = 100;  
+k = (wmax-wmin) / Td;
 
-plot(t,u)
+% Abtastzeit
+ws = wmax * 20;
+T = 2*pi/ws;
+
+% Chirp signal / Sweep
+tk = (0:T:Td)';
+u = (cos(wmin*tk+1/2*k*tk.^2))';
+
+
+plot(tk,u)
+
+% Spektrum
+FFTSpectrum(u,T,length(tk),5)
