@@ -1,5 +1,8 @@
 function [ output_args ] = FFTSpectrum(x, Ts, Np, figNumbers)
 
+warning('obsolete spectrum, use FFTSpektrum');
+
+        
 N=length(x);
 y=fft(x,Np)/N;
 
@@ -18,7 +21,9 @@ end
 
 
 figure(figNumbers)
-plot(w,abs(y),'b+');
+semilogx(w,abs(y),'b+');
+xlabel('Frequency (rad/s)');
+title('Spectrum');
 
 end
 
