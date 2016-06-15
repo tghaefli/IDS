@@ -5,7 +5,7 @@ Identifikation dynamischer Systeme
 ## Output Error  
     Equation, Code, Dis-Advantages
 
-## equation Error  
+## Equation Error  
     Equation, Code, Dis-Advantages
 
 ## Least Square  
