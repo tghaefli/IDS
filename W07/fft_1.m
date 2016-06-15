@@ -15,8 +15,7 @@ plot(y,'+')   % 2 Hz,  5 samples per Period
 
 %%
 clc;
-FFTSpectrum(x(1:10), 1/fs, 500, 2)
-
+FFTSpectrum(x(1:10), 1/fs, 500, 3)  % only one Periode
 
 
 %%
@@ -30,7 +29,7 @@ X2 = abs(fft(x,N2));   F2 = [0:N2-1]/N2;
 X3 = abs(fft(x,N3));   F3 = [0:N3-1]/N3;
 
 
-figure(2)
+figure(4)
 subplot(3,1,1)
 plot(F1,X1,'-x'),title('N=64'),axis([0 1 0 20])
 

@@ -15,7 +15,7 @@ theta_0 = [3.0 0.1];
 
 % 1.0 < Kp  < 10.0
 % 0.01 < Tau < 20.0
-LB = [1.0 0.001 ];
+LB = [1.0 0.001];
 UB = [100 20];
 
 %@: anonymous, which variables can be varied
@@ -23,7 +23,7 @@ UB = [100 20];
 options = optimoptions('fmincon');
 options.Display = 'iter';
 
-[val J] = fmincon(@(theta) EquationErrorObjctiveFunction(theta, t_k, u_k, y_m_k), theta_0, ...
+[val J] = fmincon(@(theta) ObjectiveFunctionEquationError(theta, t_k, u_k, y_m_k, T), theta_0, ...
     [], [], [], [], ...
     LB, UB, ...
     [], options)

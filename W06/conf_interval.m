@@ -30,4 +30,4 @@ for k=1:size(covTheta)
 end
 
 [theta_min theta theta_max]
-(T_square > 1.96^2)
+(T_square > 1.96^2)     % 95% confidence interval

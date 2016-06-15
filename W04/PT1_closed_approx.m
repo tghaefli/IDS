@@ -1,4 +1,6 @@
 close all;  clear all;  clc;
+% Least square
+
 
 % Generate measurment data
 measurementGeneratorPT1;
@@ -17,11 +19,10 @@ if true
     % Residuum
     figure(2)
     plot(tk(2:end),y-y_hat)
-end
-
 
 % My method
-if true
+else
+   
     % Define phi
     y_tmp = [0 ; -ym(1:end-1)];
     u_tmp = [0 ; uk(1:end-1)];

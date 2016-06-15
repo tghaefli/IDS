@@ -5,7 +5,7 @@ b1 = theta(2);
 
 %y_hat(1,1) = y_m(1);
 phi = [-y_m(1:end-1,1) u(1:end-1,1)];
-Y_hat = phi * [a1 b1]';    
+Y_hat = phi * [a1 b1]';
 Y_hat = [y_m(1) ; Y_hat];
 
 
