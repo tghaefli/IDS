@@ -19,7 +19,7 @@ disp(b0)
 simulationTime = 5;
 tk = (0:T:5)';
 uk = zeros(length(tk),1);
-uk(find(tk >= 2.5)) = 1;
+uk(find(tk >= 2.5)) = 1;        % Step function
 
 y(1) = 0.0;
 % Difference equation

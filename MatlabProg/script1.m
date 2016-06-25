@@ -5,22 +5,29 @@ clc;
 %% Run script gen_meas_and_noise first
 measurementGeneratorPT1;
 
+
+
+
 %% Discrete
-%Initial guess for th emodel parameters
 clc;
 
+%Initial guess for the model parameters
 theta = [0 0];
 
 theta(1) = -exp(-T/0.2);
 %theta(2) = 2*(1-exp(-T/0.2));
 theta(2) = 3*(1-exp(-T/0.2));
 
-
+%Single shot, only 1 try
 Je = ObjectiveFunctionEquationError(theta, tk, uk, ym, T);
 Je
 
+%Single shot, only 1 try
 Jo = ObjectiveFunctionOutputError(theta, tk, uk, ym, T);
 Jo
+
+
+
 
 %% Equation Error
 theta_0 = [0 0]';
@@ -34,6 +41,8 @@ options.Display = 'iter';
     [], [], [], [], ...
     LB, UB, ...
     [], options)
+
+
 
 
 %% Output Error

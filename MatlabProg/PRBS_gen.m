@@ -2,12 +2,12 @@ close all;  clear all;  clc;
 
 n = 11;
 
-T = 0.005;    % Abtastzeit
+T = 0.0005;    % Abtastzeit
 
 umin = 5;       % Nicht von 0 starten
 umax = 8;       % Nur eine kleine Abweichung von umin
 
-L = 3;              % Anzahl der Perioden
+L = 10;              % Anzahl der Perioden
 N = 2^n-1;          % Anzahl Messpunkte pro Sequenz
 To = (2^n-1)*T;     % Periodenlänge
 
@@ -47,10 +47,13 @@ for iterK=1:L*N
 end
 u = u';
 tk = linspace(0,Tf-T,N*L);
-figure(10)
-%plot(tk, u, '+');
-stem(tk, u)
 
-%FFTSpectrum(u-mean(u),T,1,2);   % my
-FFTSpektrum(u-mean(u),T,1,2);   % teacher
-clear iterK L n N reg tap tmp To umax umin
+figure(10)
+stem(tk, u)
+title('PRBS signal over time');
+
+
+FFTSpektrum(u-mean(u),T,1,11);
+
+
+clear iterK L n reg tap tmp To umax umin
